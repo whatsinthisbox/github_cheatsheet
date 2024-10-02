@@ -118,3 +118,27 @@ ssh -T git@github.com
      ```
 
 Teraz Twoja ściągawka powinna być dostępna w prywatnym repozytorium na GitHubie.
+
+Różnica między `git push -u origin master` a `git push -u origin main` polega na nazwie domyślnej gałęzi, do której wysyłasz zmiany.
+
+### 1. **`master` vs. `main`**:
+- **`master`**: Przez wiele lat, w Git, domyślną nazwą głównej gałęzi, która była tworzona przy inicjalizacji repozytorium, była `master`.
+- **`main`**: Od października 2020 roku Git zmienił domyślną nazwę głównej gałęzi na **`main`**, aby przyczynić się do większej inkluzywności językowej.
+
+W rezultacie nowe repozytoria Git automatycznie używają nazwy `main` jako domyślnej gałęzi, chyba że zostanie to zmienione ręcznie.
+
+### 2. **Polecenia `git push -u origin master` i `git push -u origin main`**:
+- **`git push -u origin master`**: Wysyła zmiany do zdalnej gałęzi o nazwie `master` na serwerze (GitHub, GitLab, itd.). Ta komenda używana była w starszych repozytoriach Git, które miały domyślną gałąź nazwaną `master`.
+- **`git push -u origin main`**: Wysyła zmiany do zdalnej gałęzi o nazwie `main` na serwerze. To jest nowa domyślna nazwa gałęzi w repozytoriach Git od 2020 roku.
+
+### 3. **Kiedy użyć `master`, a kiedy `main`**:
+- **Jeśli tworzysz nowe repozytorium**, używaj `main`, ponieważ jest to nowa domyślna nazwa.
+- **Jeśli pracujesz nad starszym repozytorium**, które nadal używa gałęzi `master`, wtedy użyj `master`.
+  
+Możesz sprawdzić, która gałąź jest domyślna w Twoim repozytorium, wykonując polecenie:
+
+```bash
+git branch
+```
+
+Domyślna gałąź będzie oznaczona gwiazdką (`*`).
