@@ -76,7 +76,7 @@ Host github-repo
 
 5. **Powiąż repozytorium lokalne z GitHubem**:
    ```bash
-   git remote add origin git@github.com:whatsinthebox/github_cheatsheet.git
+   git remote add origin git@github.com:whatsinthisbox/github_cheatsheet.git
    ```
 
 6. **Wgraj pliki na GitHub**:
@@ -113,7 +113,7 @@ ssh -T git@github.com
 
    - **Powiązanie z GitHubem i wysłanie plików**:
      ```bash
-     git remote add origin git@github.com:whatsinthebox/github_cheatsheet.git
+     git remote add origin git@github.com:whatsinthisbox/github_cheatsheet.git
      git push -u origin master
      ```
 
