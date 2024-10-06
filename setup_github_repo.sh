@@ -45,6 +45,7 @@ echo ""
 
 # Instrukcja dodania zdalnego repozytorium do Git
 echo "Po dodaniu klucza do GitHuba, skonfiguruj repozytorium w folderze:"
+echo "git init"
 echo "git remote add origin git@github.com:whatsinthisbox/$REPO_NAME.git"
 echo "git push -u origin master"
 
