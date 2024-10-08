@@ -119,6 +119,7 @@ ssh -T git@github.com
 
 Teraz Twoja ściągawka powinna być dostępna w prywatnym repozytorium na GitHubie.
 
+```
 Różnica między `git push -u origin master` a `git push -u origin main` polega na nazwie domyślnej gałęzi, do której wysyłasz zmiany.
 
 ### 1. **`master` vs. `main`**:
