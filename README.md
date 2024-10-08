@@ -119,7 +119,7 @@ ssh -T git@github.com
 
 Teraz Twoja ściągawka powinna być dostępna w prywatnym repozytorium na GitHubie.
 
-```
+---
 Różnica między `git push -u origin master` a `git push -u origin main` polega na nazwie domyślnej gałęzi, do której wysyłasz zmiany.
 
 ### 1. **`master` vs. `main`**:
@@ -143,3 +143,65 @@ git branch
 ```
 
 Domyślna gałąź będzie oznaczona gwiazdką (`*`).
+
+---
+
+Aby pobrać prywatne repozytorium na innym laptopie z Windows 11 z WSL (Ubuntu), wykonaj następujące kroki:
+
+### Krok 1: Skonfiguruj SSH do GitHub
+
+1. **Zaloguj się do WSL i wygeneruj klucz SSH (jeśli go nie masz):**
+   Otwórz terminal WSL (Ubuntu) i wygeneruj nowy klucz SSH:
+
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   ```
+
+   Wciśnij `Enter`, aby zaakceptować domyślne lokalizacje, a następnie utwórz hasło (jeśli chcesz zabezpieczyć klucz).
+
+2. **Dodaj klucz prywatny do agenta SSH:**
+
+   ```bash
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_rsa
+   ```
+
+3. **Skopiuj klucz publiczny do GitHub:**
+
+   Skopiuj zawartość klucza publicznego:
+
+   ```bash
+   cat ~/.ssh/id_rsa.pub
+   ```
+
+   Skopiuj tekst, który pojawi się w terminalu.
+
+4. **Dodaj klucz SSH do GitHub:**
+   - Wejdź na stronę GitHub, zaloguj się i przejdź do: `Settings -> SSH and GPG keys -> New SSH key`.
+   - Wklej skopiowany klucz publiczny i nadaj mu nazwę.
+
+### Krok 2: Sklonuj repozytorium
+
+1. **Przejdź do pustego folderu w WSL:**
+
+   ```bash
+   cd /mnt/c/path/to/empty/folder
+   ```
+
+2. **Sklonuj repozytorium za pomocą SSH:**
+
+   Używając swojego loginu i nazwy repozytorium, uruchom:
+
+   ```bash
+   git clone git@github.com:whatsinthebox/github_cheatsheet.git
+   ```
+
+   Pamiętaj, żeby zastąpić `whatsinthebox/github_cheatsheet.git` właściwą nazwą repozytorium.
+
+3. **Wejdź do katalogu repozytorium:**
+
+   ```bash
+   cd github_cheatsheet
+   ```
+
+Teraz repozytorium jest sklonowane i możesz nad nim pracować na innym laptopie.
