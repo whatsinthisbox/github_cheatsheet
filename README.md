@@ -193,10 +193,10 @@ Aby pobrać prywatne repozytorium na innym laptopie z Windows 11 z WSL (Ubuntu),
    Używając swojego loginu i nazwy repozytorium, uruchom:
 
    ```bash
-   git clone git@github.com:whatsinthebox/github_cheatsheet.git
+   git clone git@github.com:whatsinthisbox/github_cheatsheet.git
    ```
 
-   Pamiętaj, żeby zastąpić `whatsinthebox/github_cheatsheet.git` właściwą nazwą repozytorium.
+   Pamiętaj, żeby zastąpić `whatsinthisbox/github_cheatsheet.git` właściwą nazwą repozytorium.
 
 3. **Wejdź do katalogu repozytorium:**
 
