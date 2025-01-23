@@ -205,3 +205,58 @@ Aby pobrać prywatne repozytorium na innym laptopie z Windows 11 z WSL (Ubuntu),
    ```
 
 Teraz repozytorium jest sklonowane i możesz nad nim pracować na innym laptopie.
+
+---
+
+
+Aby zautomatyzować proces uruchamiania ssh-agent i dodawania klucza SSH w Windows Subsystem for Linux (WSL), możesz dodać odpowiednie polecenia do pliku konfiguracyjnego powłoki, takiego jak .bashrc lub .zshrc, w zależności od używanej powłoki. Oto kroki, które możesz wykonać:
+
+1. Otwórz plik konfiguracyjny powłoki
+W zależności od tego, której powłoki używasz, otwórz odpowiedni plik konfiguracyjny:
+
+Dla Bash:
+   ```bash
+nano ~/.bashrc
+```
+
+Dla Zsh:
+   ```bash
+nano ~/.zshrc
+```
+2. Dodaj skrypt uruchamiający ssh-agent
+Na końcu pliku dodaj następujący kod:
+
+   ```bash
+    # Uruchom ssh-agent, jeśli nie jest już uruchomiony
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+    fi
+    ```
+
+3. Zapisz i zamknij plik
+W przypadku edytora nano, naciśnij CTRL + X, następnie Y, aby zapisać zmiany, i Enter, aby zamknąć edytor.
+
+4. Zastosuj zmiany
+Aby zastosować zmiany w bieżącej sesji powłoki, uruchom:
+
+   ```bash
+    source ~/.bashrc
+    ```
+lub, jeśli używasz Zsh:
+
+   ```bash
+    source ~/.zshrc
+   ```
+5. Testuj automatyzację
+Teraz, gdy otworzysz nową sesję WSL, ssh-agent powinien być automatycznie uruchamiany, a klucz SSH dodawany, co powinno pozwolić na korzystanie z git push i ssh -T git@github.com bez problemów.
+
+Dodatkowe uwagi
+Upewnij się, że plik klucza prywatnego (~/.ssh/id_rsa) ma odpowiednie uprawnienia. Możesz to zrobić, uruchamiając:
+
+   ```bash
+chmod 600 ~/.ssh/id_rsa
+```
+Jeśli używasz innego klucza SSH, zaktualizuj ścieżkę w poleceniu ssh-add odpowiednio.
+
+Dzięki tym krokom powinieneś być w stanie zautomatyzować proces uruchamiania ssh-agent i dodawania klucza SSH przy każdym uruchomieniu WSL.
